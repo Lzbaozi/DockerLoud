@@ -1,0 +1,6 @@
+- name: call hostname
+  hosts: registrationcenter
+  sudo: True
+  tasks:
+    - name: install
+      shell: hostname > /hostname.txt
