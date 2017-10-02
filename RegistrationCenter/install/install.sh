@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker build -t dockerloud/RegistrationCenter .
+docker build -t dockerloud/registrationcenter .
 
-docker save dockerloud/RegistrationCenter > /tmp/RegistrationCenter.tar
+docker save dockerloud/registrationCenter > /tmp/RegistrationCenter.tar

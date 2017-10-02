@@ -73,6 +73,7 @@
 								<copy todir="./release_folder/">
 									<fileset dir="./install">
 										<include name="install.sh" />
+										<include name="Dockerfile" />
 									</fileset>
 								</copy>
 							</tasks>
