@@ -1,0 +1,1 @@
+ansible -i /root/dockerloud/AnsiblePlayBooks/hosts registrationcenter -a "hostname"
