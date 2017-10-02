@@ -1,6 +1,20 @@
-- name: call hostname
+- name: install registration center
   hosts: registrationcenter
   sudo: True
   tasks:
-    - name: install
-      shell: hostname > /hostname.txt
+    - name: install docker
+      shell: sudo yum -y install docker-io
+    - name: copy image
+      copy: src=/tmp/registrationcenter.tar dest=/tmp/registrationcenter.tar owner=root group=root mode=777
+    - name: restart docker service
+      shell: systemctl restart docker
+    - name: remove container
+      shell: docker rm RegistrationCenter
+      ignore_errors: yes
+    - name: remove image
+      shell: docker rmi dockerloud/registrationcenter
+      ignore_errors: yes
+    - name: load image
+      shell: docker load < /tmp/registrationcenter.tar
+    - name: build and start container
+      shell: docker run  --name RegistrationCenter -p 1111:1111 dockerloud/registrationcenter &
