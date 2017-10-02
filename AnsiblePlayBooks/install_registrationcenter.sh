@@ -1,1 +1,1 @@
-ansible -i /root/dockerloud/dockerloud/AnsiblePlayBooks/hosts registrationcenter -a "hostname"
+ansible -i /root/dockerloud/DockerLoud/AnsiblePlayBooks/hosts registrationcenter -a "hostname"
