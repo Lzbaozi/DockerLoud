@@ -41,27 +41,27 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-lib-src-webapps</id>
-						<phase>package</phase>
-						<configuration>
-							<tasks>
-								<copy todir="./release_folder/release_jars">
-									<fileset dir="./target">
-										<include name="regcenter-0.0.1-SNAPSHOT.jar" />
-									</fileset>
-								</copy>
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			<plugin>   
+             <artifactId>maven-antrun-plugin</artifactId>    
+             <executions>       
+                <execution>         
+                   <phase>package</phase>        
+                   <goals>            
+                         <goal>run</goal>        
+                   </goals>             
+                   <configuration>       
+                     <tasks>
+                        <mkdir dir="./release_folder/release_jars"/>        
+                        <copy todir="./release_folder/release_jars" overwrite="true" > 
+                            <fileset dir="${project.build.directory}" erroronmissingdir="false">
+                                <include name="*.jar"/>
+                            </fileset>
+                         </copy>     
+                     </tasks>        
+                   </configuration>        
+                </execution>    
+             </executions>  
+            </plugin>   
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
