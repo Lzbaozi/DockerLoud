@@ -6,8 +6,11 @@
       shell: sudo yum -y install docker-io
     - name: copy image
       copy: src=/tmp/registrationcenter.tar dest=/tmp/registrationcenter.tar owner=root group=root mode=777
-    - name: restart docker service
-      shell: systemctl restart docker
+    - name: start docker service
+      shell: systemctl start docker
+    - name: stop container
+      shell: docker stop RegistrationCenter
+      ignore_errors: yes
     - name: remove container
       shell: docker rm RegistrationCenter
       ignore_errors: yes
@@ -18,3 +21,4 @@
       shell: docker load < /tmp/registrationcenter.tar
     - name: build and start container
       shell: docker run  --name RegistrationCenter -p 1111:1111 dockerloud/registrationcenter &
+      
