@@ -3,3 +3,6 @@
 
 [configcenter]
 192.168.1.12 ansible_ssh_user=root ansible_ssh_pass=root
+
+[employeeservice]
+192.168.1.12 ansible_ssh_user=root ansible_ssh_pass=root
