@@ -1,5 +1,7 @@
 #!/bin/bash
 
+systemctl start docker
+
 docker stop RegistrationCenter
 docker rm RegistrationCenter
 docker rmi dockerloud/registrationcenter

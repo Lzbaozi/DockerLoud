@@ -1,5 +1,7 @@
 #!/bin/bash
 
+systemctl start docker
+
 docker stop ConfigCenter
 docker rm ConfigCenter
 docker rmi dockerloud/configcenter

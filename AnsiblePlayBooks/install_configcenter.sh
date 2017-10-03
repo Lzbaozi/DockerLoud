@@ -1,2 +1,2 @@
-ansible-playbook -i /root/dockerloud/DockerLoud/AnsiblePlayBooks/hosts registrationcenter.yml
+ansible-playbook -i /root/dockerloud/DockerLoud/AnsiblePlayBooks/hosts configcenter.yml
 
