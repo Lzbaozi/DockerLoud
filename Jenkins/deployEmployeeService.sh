@@ -15,7 +15,7 @@ chmod 777 buildImage.sh
 ./buildImage.sh
 
 cd ../../AnsiblePlayBooks/
-dos2unix install_employeeservice.sh.sh
-chmod 777 install_employeeservice.sh.sh
+dos2unix install_employeeservice.sh
+chmod 777 install_employeeservice.sh
 ./install_employeeservice.sh.sh
 
