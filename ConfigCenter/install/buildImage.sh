@@ -8,6 +8,6 @@ docker rmi dockerloud/configcenter
 
 docker build -t dockerloud/configcenter .
 
-rm -f /tmp/configcenter.tar
+rm -f /root/configcenter.tar
 
-docker save dockerloud/configcenter > /tmp/configcenter.tar
+docker save dockerloud/configcenter > /root/configcenter.tar
