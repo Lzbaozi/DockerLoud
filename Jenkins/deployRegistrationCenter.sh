@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /root/dockerloud/DockerLoud
-git pull https://github.com/Lzbaozi/DockerLoud.git
+git fetch https://github.com/Lzbaozi/DockerLoud.git
 
 cd RegistrationCenter
 mvn clean install
