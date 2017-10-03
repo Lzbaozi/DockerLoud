@@ -5,7 +5,7 @@
     - name: install docker
       shell: sudo yum -y install docker-io
     - name: delete image
-      shell: rm -f /tmp/registrationcenter.tar
+      shell: rm -f /tmp/configcenter.tar
     - name: copy image
       copy: src=/tmp/configcenter.tar dest=/tmp/configcenter.tar owner=root group=root mode=777
     - name: start docker service
@@ -22,7 +22,7 @@
     - name: load image
       shell: docker load < /tmp/configcenter.tar
     - name: build and start container
-      shell: docker run  --name ConfigCenter -p 1111:1111 dockerloud/configcenter &
+      shell: docker run  --name ConfigCenter -p 5555:5555 dockerloud/configcenter &
     - name: sleep 5s
       shell: sleep 5s
       ignore_errors: yes
