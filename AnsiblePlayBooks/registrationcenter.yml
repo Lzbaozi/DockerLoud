@@ -4,6 +4,8 @@
   tasks:
     - name: install docker
       shell: sudo yum -y install docker-io
+    - name: delete image
+      shell: rm -f /tmp/registrationcenter.tar
     - name: copy image
       copy: src=/tmp/registrationcenter.tar dest=/tmp/registrationcenter.tar owner=root group=root mode=777
     - name: start docker service
@@ -24,7 +26,7 @@
     - name: sleep 5s
       shell: sleep 5s
       ignore_errors: yes
-    - name: sleep 5s
+    - name: start container
       shell: docker start RegistrationCenter
       ignore_errors: yes
       
