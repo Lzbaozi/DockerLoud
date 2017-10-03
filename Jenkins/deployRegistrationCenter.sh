@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cd /root/dockerloud
+cd /root/dockerloud/DockerLoud
 git pull https://github.com/Lzbaozi/DockerLoud.git
 
-cd DockerLoud/RegistrationCenter
+cd RegistrationCenter
 mvn clean install
 
 dos2unix buildImage.sh
