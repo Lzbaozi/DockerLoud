@@ -6,7 +6,7 @@ git fetch --all
 git reset --hard origin/master 
 git pull
 
-cd RegistrationCenter
+cd ConfigCenter
 mvn clean install
 
 cd release_folder
@@ -15,7 +15,7 @@ chmod 777 buildImage.sh
 ./buildImage.sh
 
 cd ../../AnsiblePlayBooks/
-dos2unix install_registrationcenter.sh
-chmod 777 install_registrationcenter.sh
-./install_registrationcenter.sh
+dos2unix install_configcenter.sh
+chmod 777 install_configcenter.sh
+./install_configcenter.sh
 
