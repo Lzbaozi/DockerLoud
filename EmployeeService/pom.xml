@@ -10,6 +10,81 @@
         <version>1.3.5.RELEASE</version>
         <relativePath /> 
     </parent>
+    
+    <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>./release_folder/release_jars</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>   
+             <artifactId>maven-antrun-plugin</artifactId>    
+             <executions>       
+                <execution>         
+                   <phase>package</phase>        
+                   <goals>            
+                         <goal>run</goal>        
+                   </goals>             
+                   <configuration>       
+                     <tasks>
+                        <mkdir dir="./release_folder/release_jars"/>        
+                        <copy todir="./release_folder/release_jars" overwrite="true" > 
+                            <fileset dir="${project.build.directory}" erroronmissingdir="false">
+                                <include name="*.jar"/>
+                            </fileset>
+                         </copy>     
+                     </tasks>        
+                   </configuration>        
+                </execution>    
+             </executions>  
+            </plugin>   
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-lib-src-webapps</id>
+						<phase>package</phase>
+						<configuration>
+							<tasks>
+								<copy todir="./release_folder/">
+									<fileset dir="./install">
+										<include name="buildImage.sh" />
+										<include name="Dockerfile" />
+									</fileset>
+								</copy>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
     <dependencies>
         <dependency>
