@@ -72,7 +72,7 @@
 							<tasks>
 								<copy todir="./release_folder/">
 									<fileset dir="./install">
-										<include name="install.sh" />
+										<include name="buildImage.sh" />
 										<include name="Dockerfile" />
 									</fileset>
 								</copy>
