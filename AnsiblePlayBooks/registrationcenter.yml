@@ -21,4 +21,10 @@
       shell: docker load < /tmp/registrationcenter.tar
     - name: build and start container
       shell: docker run  --name RegistrationCenter -p 1111:1111 dockerloud/registrationcenter &
+    - name: sleep 5s
+      shell: sleep 5s
+      ignore_errors: yes
+    - name: sleep 5s
+      shell: docker start RegistrationCenter
+      ignore_errors: yes
       

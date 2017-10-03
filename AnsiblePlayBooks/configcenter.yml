@@ -21,4 +21,9 @@
       shell: docker load < /tmp/configcenter.tar
     - name: build and start container
       shell: docker run  --name ConfigCenter -p 1111:1111 dockerloud/configcenter &
-      
+    - name: sleep 5s
+      shell: sleep 5s
+      ignore_errors: yes
+    - name: sleep 5s
+      shell: docker start ConfigCenter
+      ignore_errors: yes
