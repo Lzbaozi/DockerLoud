@@ -1,8 +1,8 @@
 [registrationcenter]
-192.168.1.12 ansible_ssh_user=root ansible_ssh_pass=root
+192.168.1.14 ansible_ssh_user=root ansible_ssh_pass=root
 
 [configcenter]
-192.168.1.12 ansible_ssh_user=root ansible_ssh_pass=root
+192.168.1.15 ansible_ssh_user=root ansible_ssh_pass=root
 
 [employeeservice]
-192.168.1.12 ansible_ssh_user=root ansible_ssh_pass=root
+192.168.1.16 ansible_ssh_user=root ansible_ssh_pass=root
