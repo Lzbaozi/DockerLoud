@@ -33,7 +33,7 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/getEmployee", method = RequestMethod.GET)
 	public String getEmployee(@RequestParam int id) {
-		return rt.getForEntity("http://EMPLOYEE-SERVICE/getEmployee?id=" + id, String.class).getBody();
+		return rt.getForEntity("http://employee-service/getEmployee?id=" + id, String.class).getBody();
 	}
 
 }
