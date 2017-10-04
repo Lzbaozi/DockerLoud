@@ -6,7 +6,7 @@ git fetch --all
 git reset --hard origin/master 
 git pull
 
-cd EmployeeService
+cd EmployeeLoadBalancerService
 mvn clean install
 
 cd release_folder
