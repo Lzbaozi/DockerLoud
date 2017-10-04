@@ -6,6 +6,7 @@
 
 [employeeservice]
 192.168.1.16 ansible_ssh_user=root ansible_ssh_pass=root
+192.168.1.17 ansible_ssh_user=root ansible_ssh_pass=root
 
 [employeeloadbalancerservice]
 192.168.1.17 ansible_ssh_user=root ansible_ssh_pass=root
