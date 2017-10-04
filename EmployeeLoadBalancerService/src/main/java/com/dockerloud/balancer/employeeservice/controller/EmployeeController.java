@@ -1,5 +1,8 @@
 package com.dockerloud.balancer.employeeservice.controller;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,7 +36,18 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/getEmployee", method = RequestMethod.GET)
 	public String getEmployee(@RequestParam int id) {
-		return rt.getForEntity("http://EMPLOYEE-SERVICE/getEmployee?id=" + id, String.class).getBody();
+		
+		InetAddress addr;
+		String hostName="";
+		try {
+			addr = InetAddress.getLocalHost();
+			hostName = addr.getHostName().toString();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}  
+		 
+		
+		return rt.getForEntity("http://EMPLOYEE-SERVICE/getEmployee?id=" + id, String.class).getBody()+ "   " + hostName;
 	}
 
 }
