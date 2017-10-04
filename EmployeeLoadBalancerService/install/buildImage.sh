@@ -2,12 +2,12 @@
 
 systemctl start docker
 
-docker stop EmployeeBlancerService
-docker rm EmployeeBlancerService
-docker rmi dockerloud/employeeblancerservice
+docker stop EmployeeLoadBalancerService
+docker rm EmployeeLoadBalancerService
+docker rmi dockerloud/employeeloadbalancerservice
 
-docker build -t dockerloud/employeeblancerservice .
+docker build -t dockerloud/employeeloadbalancerservice .
 
-rm -f /root/employeeblancerservice.tar
+rm -f /root/employeeloadbalancerservice.tar
 
-docker save dockerloud/employeeblancerservice > /root/employeeblancerservice.tar
+docker save dockerloud/employeeloadbalancerservice > /root/employeeloadbalancerservice.tar

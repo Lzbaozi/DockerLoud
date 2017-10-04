@@ -1,0 +1,32 @@
+- name: install employee service
+  hosts: employeeloadbalancerservice
+  sudo: True
+  tasks:
+    - name: install docker
+      shell: sudo yum -y install docker-io
+    - name: delete image
+      shell: rm -f /root/employeeloadbalancerservice.tar
+    - name: copy image
+      copy: src=/root/employeeloadbalancerservice.tar dest=/root/employeeloadbalancerservice.tar owner=root group=root mode=777
+    - name: start docker service
+      shell: systemctl start docker
+    - name: stop container
+      shell: docker stop EmployeeLoadBalancerService
+      ignore_errors: yes
+    - name: remove container
+      shell: docker rm EmployeeLoadBalancerService
+      ignore_errors: yes
+    - name: remove image
+      shell: docker rmi dockerloud/employeeloadbalancerservice
+      ignore_errors: yes
+    - name: load image
+      shell: docker load < /root/employeeloadbalancerservice.tar
+    - name: build and start container
+      shell: docker run  --name EmployeeLoadBalancerService -p 2222:2222 dockerloud/employeeloadbalancerservice &
+    - name: sleep 5s
+      shell: sleep 5s
+      ignore_errors: yes
+    - name: start container
+      shell: docker start EmployeeLoadBalancerService
+      ignore_errors: yes
+      
