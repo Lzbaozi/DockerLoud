@@ -22,7 +22,7 @@
     - name: load image
       shell: docker load < /root/employeeloadbalancerservice.tar
     - name: build and start container
-      shell: docker run  --name EmployeeLoadBalancerService --net=host dockerloud/employeeloadbalancerservice &
+      shell: docker run  --name EmployeeLoadBalancerService -p 2222:2222 dockerloud/employeeloadbalancerservice &
     - name: sleep 5s
       shell: sleep 5s
       ignore_errors: yes

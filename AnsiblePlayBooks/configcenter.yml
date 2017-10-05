@@ -22,7 +22,7 @@
     - name: load image
       shell: docker load < /root/configcenter.tar
     - name: build and start container
-      shell: docker run  --name ConfigCenter --net=host dockerloud/configcenter &
+      shell: docker run  --name ConfigCenter -p 5555:5555 dockerloud/configcenter &
     - name: sleep 5s
       shell: sleep 5s
       ignore_errors: yes

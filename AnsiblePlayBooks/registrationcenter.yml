@@ -22,7 +22,7 @@
     - name: load image
       shell: docker load < /root/registrationcenter.tar
     - name: build and start container
-      shell: docker run  --name RegistrationCenter --net=host dockerloud/registrationcenter &
+      shell: docker run  --name RegistrationCenter -p 1111:1111 dockerloud/registrationcenter &
     - name: sleep 5s
       shell: sleep 5s
       ignore_errors: yes
