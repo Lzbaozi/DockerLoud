@@ -22,7 +22,7 @@
     - name: load image
       shell: docker load < /root/employeeservice.tar
     - name: build and start container
-      shell: docker run  --name EmployeeService -p 3333:3333 dockerloud/employeeservice &
+      shell: docker run  --name EmployeeService --net=host dockerloud/employeeservice &
     - name: sleep 5s
       shell: sleep 5s
       ignore_errors: yes
