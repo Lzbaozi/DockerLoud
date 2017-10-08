@@ -48,7 +48,7 @@ public class EmployeeController {
 				req.getSession().setAttribute("count", 0);
 			}
 			
-			
+			emp.setAge(Integer.parseInt(req.getSession().getAttribute("count").toString()));
 			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
