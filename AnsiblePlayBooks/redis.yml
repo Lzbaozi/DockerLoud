@@ -1,0 +1,11 @@
+- name: install config center
+  hosts: configcenter
+  sudo: True
+  tasks:
+    - name: install epel-release
+      shell: yum install -y epel-release 
+    - name: install redis
+      shell: yum install -y redis
+    - name: start redis
+      shell: start redis
+    

@@ -3,6 +3,8 @@ package com.dockerloud.employeeservice.controller;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,13 +32,24 @@ public class EmployeeController {
     private String message2; 
 
     @RequestMapping(value = "/getEmployee" ,method = RequestMethod.GET)
-    public Employee getEmployee(@RequestParam int id) {
+    public Employee getEmployee(@RequestParam int id,HttpServletRequest req) {
     	System.out.println(message1);
     	Employee emp = service.getEmployee(id);
     	
     	try {
 			InetAddress addr = InetAddress.getLocalHost();
 			emp.setEmail(addr.getHostName()+":::"+addr.getHostAddress());
+			
+			if(req.getSession().getAttribute("count")!=null){
+				int count = Integer.parseInt((String) req.getSession().getAttribute("count"));
+				count++;
+				req.getSession().setAttribute("count", count);
+			}else{
+				req.getSession().setAttribute("count", 0);
+			}
+			
+			
+			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}

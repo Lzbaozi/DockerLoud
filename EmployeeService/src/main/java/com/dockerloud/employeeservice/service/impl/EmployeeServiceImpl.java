@@ -9,7 +9,6 @@ import com.dockerloud.employeeservice.service.EmployeeService;
 public class EmployeeServiceImpl implements EmployeeService {
 
 	public boolean createEmployee(Employee employee) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
