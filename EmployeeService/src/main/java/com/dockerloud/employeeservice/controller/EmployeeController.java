@@ -41,7 +41,7 @@ public class EmployeeController {
 			emp.setEmail(addr.getHostName()+":::"+addr.getHostAddress());
 			
 			if(req.getSession().getAttribute("count")!=null){
-				int count = Integer.parseInt((String) req.getSession().getAttribute("count"));
+				int count = Integer.parseInt(req.getSession().getAttribute("count").toString());
 				count++;
 				req.getSession().setAttribute("count", count);
 			}else{
