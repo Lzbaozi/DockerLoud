@@ -33,7 +33,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/getEmployee" ,method = RequestMethod.GET)
     public Employee getEmployee(@RequestParam int id,HttpServletRequest req) {
-    	System.out.println(message1);
+//    	System.out.println(message1);
     	Employee emp = service.getEmployee(id);
     	
     	try {
@@ -48,6 +48,7 @@ public class EmployeeController {
 				req.getSession().setAttribute("count", 0);
 			}
 			
+			emp.setName(req.getSession().getId());
 			emp.setAge(Integer.parseInt(req.getSession().getAttribute("count").toString()));
 			
 		} catch (UnknownHostException e) {
