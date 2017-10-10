@@ -4,6 +4,8 @@
   tasks:
     - name: install docker
       shell: sudo yum -y install docker-io
+    - name: start docker
+      shell: systemctl start docker
     - name: delete image
       shell: rm -f /root/employeeservice.tar
     - name: copy image
