@@ -192,9 +192,9 @@ public class SessionRepositoryFilter<S extends ExpiringSession> extends OncePerR
 				S session = wrappedSession.session;
 				sessionRepository.save(session);
 //				if(!isRequestedSessionIdValid() || !session.getId().equals(getRequestedSessionId())) {
-				if(!isRequestedSessionIdValid() || !true) {
-					httpSessionStrategy.onNewSession(session, this, response);
-				}
+//				if(!isRequestedSessionIdValid() || !true) {
+//					httpSessionStrategy.onNewSession(session, this, response);
+//				}
 			}
 		}
 
