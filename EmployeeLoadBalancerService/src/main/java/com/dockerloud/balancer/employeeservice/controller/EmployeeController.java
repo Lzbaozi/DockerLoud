@@ -1,5 +1,8 @@
 package com.dockerloud.balancer.employeeservice.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
@@ -41,14 +44,18 @@ public class EmployeeController {
 		return new RestTemplate();
 	}
 
-	@RequestMapping(value = "/getEmployee", method = RequestMethod.GET)
+	@RequestMapping(value = "/test/getEmployee", method = RequestMethod.GET)
 	public String getEmployee(@RequestParam int id,HttpServletRequest request) {
 		
 		String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
 		if (StringUtils.isNotBlank(sessionId)) {
 			HttpHeaders headers = new HttpHeaders();  
 			headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);  
-			headers.set("Cookie", request.getHeader("Cookie"));
+			List list = new ArrayList();
+			list.add("JSESSIONID="+sessionId);
+			list.add(request.getHeader("Cookie"));
+			list.add("jsessionid="+sessionId);
+			headers.put("Cookie",list);
 			HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(null, headers);  
 			ResponseEntity<String> response = rt.exchange( "http://EMPLOYEE-SERVICE/getEmployee?id=" + id, HttpMethod.GET, requestEntity , String.class );  
 			return response.getBody();
