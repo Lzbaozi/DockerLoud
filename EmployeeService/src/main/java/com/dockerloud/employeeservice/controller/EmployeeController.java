@@ -2,8 +2,12 @@ package com.dockerloud.employeeservice.controller;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +36,7 @@ public class EmployeeController {
     private String message2; 
 
     @RequestMapping(value = "/getEmployee" ,method = RequestMethod.GET)
-    public Employee getEmployee(@RequestParam int id,HttpServletRequest req) {
+    public Employee getEmployee(@RequestParam int id,HttpServletRequest req,HttpServletResponse response) {
 //    	System.out.println(message1);
     	Employee emp = service.getEmployee(id);
     	
@@ -54,6 +58,13 @@ public class EmployeeController {
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
+    	String sessionId = req.getSession().getId();
+    	Cookie cookie1 = new Cookie("JSESSIONID",sessionId);
+    	Cookie cookie2 = new Cookie("SESSION",sessionId);
+    	Cookie cookie3 = new Cookie("jsessionid",sessionId);
+		response.addCookie(cookie1);
+		response.addCookie(cookie2);
+		response.addCookie(cookie3);
     	
         return emp;
     }
