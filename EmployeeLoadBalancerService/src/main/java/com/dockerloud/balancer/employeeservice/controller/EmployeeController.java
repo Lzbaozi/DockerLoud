@@ -44,6 +44,21 @@ public class EmployeeController {
 		return new RestTemplate();
 	}
 
+	@RequestMapping(value = "/test/login", method = RequestMethod.GET)
+	public String login(@RequestParam int id,HttpServletRequest request) {
+		String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
+		if (StringUtils.isNotBlank(sessionId)) {
+			HttpHeaders headers = new HttpHeaders();  
+			headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);  
+			headers.set("x-auth-token", request.getHeader("x-auth-token"));
+			HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(null, headers);  
+			ResponseEntity<String> response = rt.exchange( "http://EMPLOYEE-SERVICE/login", HttpMethod.GET, requestEntity , String.class );  
+			return response.getBody();
+        }
+		return rt.getForEntity("http://EMPLOYEE-SERVICE/getEmployee?id=" + id, String.class).getBody();
+		
+	}
+	
 	@RequestMapping(value = "/test/getEmployee", method = RequestMethod.GET)
 	public String getEmployee(@RequestParam int id,HttpServletRequest request) {
 		
@@ -51,11 +66,7 @@ public class EmployeeController {
 		if (StringUtils.isNotBlank(sessionId)) {
 			HttpHeaders headers = new HttpHeaders();  
 			headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);  
-			List list = new ArrayList();
-			list.add("JSESSIONID="+sessionId);
-			list.add(request.getHeader("Cookie"));
-			list.add("jsessionid="+sessionId);
-			headers.put("Cookie",list);
+			headers.set("x-auth-token", request.getHeader("x-auth-token"));
 			HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(null, headers);  
 			ResponseEntity<String> response = rt.exchange( "http://EMPLOYEE-SERVICE/getEmployee?id=" + id, HttpMethod.GET, requestEntity , String.class );  
 			return response.getBody();

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import com.dockerloud.employeeservice.bean.Employee;
 import com.dockerloud.employeeservice.service.EmployeeService;
@@ -30,10 +31,17 @@ public class EmployeeController {
     
     @Value("${message2}")  
     private String message2; 
+    
+    @RequestMapping(value = "/login" ,method = RequestMethod.GET)
+    public Employee login(HttpServletRequest request) {
+    	Employee emp = new Employee();
+    	emp.setName(request.getHeader("x-auth-token")+"...");
+    	return emp;
+    }
 
     @RequestMapping(value = "/getEmployee" ,method = RequestMethod.GET)
     public Employee getEmployee(@RequestParam int id,HttpServletRequest req) {
-//    	System.out.println(message1);
+    	String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
     	Employee emp = service.getEmployee(id);
     	
     	try {
