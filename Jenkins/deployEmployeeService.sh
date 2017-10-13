@@ -7,7 +7,7 @@ git reset --hard origin/master
 git pull
 
 cd EmployeeService
-rm -rf /release_folder/release_jars
+rm -rf ./release_folder/release_jars
 mvn clean install
 
 cd release_folder

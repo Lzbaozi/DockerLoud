@@ -8,7 +8,7 @@ git pull
 
 cd EmployeeLoadBalancerService
 
-rm -rf /release_folder/release_jars
+rm -rf ./release_folder/release_jars
 
 mvn clean install
 
