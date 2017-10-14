@@ -8,8 +8,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.7.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<version>1.5.6.RELEASE</version>
 	</parent>
 
 	<build>
@@ -41,27 +40,28 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>   
-             <artifactId>maven-antrun-plugin</artifactId>    
-             <executions>       
-                <execution>         
-                   <phase>package</phase>        
-                   <goals>            
-                         <goal>run</goal>        
-                   </goals>             
-                   <configuration>       
-                     <tasks>
-                        <mkdir dir="./release_folder/release_jars"/>        
-                        <copy todir="./release_folder/release_jars" overwrite="true" > 
-                            <fileset dir="${project.build.directory}" erroronmissingdir="false">
-                                <include name="*.jar"/>
-                            </fileset>
-                         </copy>     
-                     </tasks>        
-                   </configuration>        
-                </execution>    
-             </executions>  
-            </plugin>   
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<mkdir dir="./release_folder/release_jars" />
+								<copy todir="./release_folder/release_jars" overwrite="true">
+									<fileset dir="${project.build.directory}"
+										erroronmissingdir="false">
+										<include name="*.jar" />
+									</fileset>
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
