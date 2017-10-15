@@ -122,10 +122,11 @@
 			<artifactId>spring-session</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>biz.paluch.redis</groupId>
-            <artifactId>lettuce</artifactId>
-            <version>3.5.0.Final</version>
-        </dependency>
+			<groupId>biz.paluch.redis</groupId>
+			<artifactId>lettuce</artifactId>
+			<!--<version>4.2.0.Final</version> -->
+			<version>4.3.0.Final</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
