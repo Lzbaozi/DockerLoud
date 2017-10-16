@@ -15,7 +15,7 @@ public class HttpSessionConfig {
         public LettuceConnectionFactory connectionFactory() {
            	LettuceConnectionFactory factory =  new LettuceConnectionFactory(); 
         	factory.setDatabase(0);
-        	factory.setHostName("192.168.150.131");
+        	factory.setHostName("192.168.1.14");
         	factory.setPassword("redispassword");
         	factory.setPort(6379);
         	return factory;
