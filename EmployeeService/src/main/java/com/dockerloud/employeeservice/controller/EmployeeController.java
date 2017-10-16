@@ -30,8 +30,8 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService service;
 
-	@Value("${url:default-value}")
-	String url;
+	@Value("${message1}")
+	String message1;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public Employee login(HttpServletRequest request) {
@@ -57,7 +57,7 @@ public class EmployeeController {
 				req.getSession().setAttribute("count", 0);
 			}
 
-			emp.setName(url);
+			emp.setName(message1);
 			emp.setAge(Integer.parseInt(req.getSession().getAttribute("count").toString()));
 
 		} catch (UnknownHostException e) {
